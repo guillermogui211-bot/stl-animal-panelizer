@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STL Animal Panelizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>STL Animal Panelizer</h1>
+      <p>Carga un STL y prepara piezas numeradas para fabricar tu busto.</p>
+    </div>
+    <button id="helpBtn" class="secondary">¿Cómo funciona?</button>
+  </header>
+
+  <main class="layout">
+    <aside class="controls">
+      <section>
+        <h2>1. Cargar modelo</h2>
+        <label class="dropzone" id="dropzone">
+          <input id="fileInput" type="file" accept=".stl,model/stl" />
+          <strong>Haz clic o arrastra aquí tu archivo STL</strong>
+          <span id="fileName">Todavía no hay ningún archivo</span>
+        </label>
+        <p class="hint">El archivo se procesa en tu navegador; no se sube a Internet.</p>
+      </section>
+
+      <section>
+        <h2>2. Medidas</h2>
+        <label>Altura final (mm)<input id="height" type="number" min="50" value="600" /></label>
+        <label>Espesor de chapa (mm)<input id="thickness" type="number" min="0.5" step="0.1" value="1.5" /></label>
+        <label>Nivel de detalle
+          <select id="detail"><option value="low">Básico</option><option value="medium" selected>Medio</option><option value="high">Alto</option></select>
+        </label>
+        <label class="check"><input id="mirror" type="checkbox" checked /> Crear lado espejo</label>
+        <button id="applyBtn" class="primary" disabled>Generar piezas</button>
+      </section>
+
+      <section>
+        <h2>3. Exportar</h2>
+        <button id="svgBtn" disabled>Descargar plantillas SVG</button>
+        <button id="csvBtn" disabled>Descargar lista de piezas</button>
+        <button id="resetBtn" class="secondary">Empezar de nuevo</button>
+      </section>
+      <div id="status" class="status">Carga un archivo STL para comenzar.</div>
+    </aside>
+
+    <section class="workspace">
+      <div class="viewer-wrap">
+        <div id="viewer"></div>
+        <div class="viewer-label">Vista 3D · arrastra para girar · rueda para zoom</div>
+      </div>
+      <div class="parts-panel">
+        <div class="parts-heading"><h2>Piezas generadas</h2><span id="count">0 piezas</span></div>
+        <div id="partsGrid" class="parts-grid"><div class="empty">Aquí aparecerán las piezas numeradas.</div></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="helpDialog">
+    <h2>Guía rápida</h2>
+    <ol><li>Busca un modelo STL de toro, ciervo u otro animal.</li><li>Arrástralo al recuadro de carga.</li><li>Indica la altura final y el nivel de detalle.</li><li>Pulsa <b>Generar piezas</b>.</li><li>Haz clic en una pieza para resaltarla en el modelo.</li><li>Descarga el SVG e imprime a escala 100 %. Prueba primero en cartón.</li></ol>
+    <p><b>Importante:</b> esta primera versión genera paneles triangulares planos basados en las caras del STL. No sustituye una comprobación física: el SVG debe probarse en cartón antes de cortar acero.</p>
+    <button id="closeHelp" class="primary">Entendido</button>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
