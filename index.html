@@ -10,7 +10,7 @@
   <header class="topbar">
     <div>
       <h1>STL Animal Panelizer</h1>
-      <p>Carga un STL y prepara piezas numeradas para fabricar tu busto.</p>
+      <p>Abre el archivo directamente y genera piezas numeradas.</p>
     </div>
     <button id="helpBtn" class="secondary">¿Cómo funciona?</button>
   </header>
@@ -24,7 +24,7 @@
           <strong>Haz clic o arrastra aquí tu archivo STL</strong>
           <span id="fileName">Todavía no hay ningún archivo</span>
         </label>
-        <p class="hint">El archivo se procesa en tu navegador; no se sube a Internet.</p>
+        <p class="hint">No hace falta servidor: puedes abrir esta página directamente desde tu ordenador.</p>
       </section>
 
       <section>
@@ -61,11 +61,14 @@
 
   <dialog id="helpDialog">
     <h2>Guía rápida</h2>
-    <ol><li>Busca un modelo STL de toro, ciervo u otro animal.</li><li>Arrástralo al recuadro de carga.</li><li>Indica la altura final y el nivel de detalle.</li><li>Pulsa <b>Generar piezas</b>.</li><li>Haz clic en una pieza para resaltarla en el modelo.</li><li>Descarga el SVG e imprime a escala 100 %. Prueba primero en cartón.</li></ol>
-    <p><b>Importante:</b> esta primera versión genera paneles triangulares planos basados en las caras del STL. No sustituye una comprobación física: el SVG debe probarse en cartón antes de cortar acero.</p>
+    <ol><li>Busca un modelo STL de toro, ciervo u otro animal.</li><li>Arrástralo al recuadro de carga.</li><li>Indica la altura final y el nivel de detalle.</li><li>Pulsa <b>Generar piezas</b>.</li><li>Haz clic en una pieza para resaltarla en el modelo.</li><li>Descarga el SVG e imprime a escala 100 %. Prueba primero con cartón.</li></ol>
+    <p><b>Importante:</b> esta primera versión genera paneles triangulares planos basados en las caras del STL. No sustituye una comprobación física. Haz la prueba en cartón antes de cortar acero.</p>
     <button id="closeHelp" class="primary">Entendido</button>
   </dialog>
 
-  <script type="module" src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
